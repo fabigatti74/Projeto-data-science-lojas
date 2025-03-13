@@ -1,6 +1,5 @@
 let nomes = [];
 
-// Capturar tecla "Enter" para adicionar nome
 document.getElementById("nome").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         adicionarNome();
@@ -12,7 +11,7 @@ function adicionarNome() {
     let nome = input.value.trim();
 
     if (nome === "") {
-        alert("Por favor, digite um nome!");
+        alert("Digite um nome válido!");
         return;
     }
 
@@ -46,7 +45,7 @@ function removerNome(index) {
 
 function sortear() {
     if (nomes.length < 2) {
-        alert("Adicione pelo menos 2 participantes para sortear!");
+        alert("Adicione pelo menos 2 participantes!");
         return;
     }
 
@@ -57,13 +56,11 @@ function sortear() {
     while (!valido) {
         embaralhado = [...sorteados];
 
-        // Embaralha os participantes (algoritmo Fisher-Yates)
         for (let i = embaralhado.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             [embaralhado[i], embaralhado[j]] = [embaralhado[j], embaralhado[i]];
         }
 
-        // Verifica se alguém pegou a si mesmo
         valido = true;
         for (let i = 0; i < nomes.length; i++) {
             if (nomes[i] === embaralhado[i]) {

@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amigo Secreto</title>
+    <title>Amigo Secreto Futurista</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Amigo Secreto</h1>
+        <h1>🤖 Amigo Secreto IA 🤖</h1>
+        <p>Digite os nomes dos participantes e clique em "Sortear".</p>
         
-        <input type="text" id="nome" placeholder="Digite um nome">
-        <button id="adicionar" onclick="adicionarNome()">Adicionar</button>
+        <div class="input-group">
+            <input type="text" id="nome" placeholder="Digite um nome...">
+            <button id="adicionar" onclick="adicionarNome()">➕ Adicionar</button>
+        </div>
         
         <h2>Participantes:</h2>
         <ul id="lista"></ul>
         
-        <button id="sortear" onclick="sortear()" disabled>Sortear</button>
-        <button id="reiniciar" onclick="reiniciar()">Reiniciar</button>
+        <button id="sortear" onclick="sortear()" disabled>🎲 Sortear</button>
+        <button id="reiniciar" onclick="reiniciar()">🔄 Reiniciar</button>
 
         <h2>Resultado:</h2>
         <ul id="resultado"></ul>
