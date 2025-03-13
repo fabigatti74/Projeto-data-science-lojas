@@ -51,9 +51,23 @@ function sortear() {
     }
 
     let embaralhado = [...nomes];
-    for (let i = embaralhado.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        [embaralhado[i], embaralhado[j]] = [embaralhado[j], embaralhado[i]];
+    let sorteioValido = false;
+
+    while (!sorteioValido) {
+        // Embaralha os participantes
+        for (let i = embaralhado.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [embaralhado[i], embaralhado[j]] = [embaralhado[j], embaralhado[i]];
+        }
+
+        // Verifica se alguém pegou a si mesmo
+        sorteioValido = true;
+        for (let i = 0; i < nomes.length; i++) {
+            if (nomes[i] === embaralhado[i]) {
+                sorteioValido = false;
+                break;
+            }
+        }
     }
 
     let resultadoLista = document.getElementById("resultado");
@@ -61,7 +75,7 @@ function sortear() {
 
     for (let i = 0; i < nomes.length; i++) {
         let li = document.createElement("li");
-        li.textContent = `${nomes[i]} tirou ${embaralhado[(i + 1) % nomes.length]}`;
+        li.textContent = `${nomes[i]} tirou ${embaralhado[i]}`;
         resultadoLista.appendChild(li);
     }
 }
