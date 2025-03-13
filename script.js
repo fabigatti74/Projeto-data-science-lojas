@@ -50,21 +50,24 @@ function sortear() {
         return;
     }
 
-    let embaralhado = [...nomes];
-    let sorteioValido = false;
+    let sorteados = [...nomes];
+    let embaralhado;
+    let valido = false;
 
-    while (!sorteioValido) {
-        // Embaralha os participantes
+    while (!valido) {
+        embaralhado = [...sorteados];
+
+        // Embaralha os participantes (algoritmo Fisher-Yates)
         for (let i = embaralhado.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             [embaralhado[i], embaralhado[j]] = [embaralhado[j], embaralhado[i]];
         }
 
         // Verifica se alguém pegou a si mesmo
-        sorteioValido = true;
+        valido = true;
         for (let i = 0; i < nomes.length; i++) {
             if (nomes[i] === embaralhado[i]) {
-                sorteioValido = false;
+                valido = false;
                 break;
             }
         }
